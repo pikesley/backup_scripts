@@ -1,0 +1,14 @@
+#!/bin/bash
+
+TODAY=`date +%Y-%m-%d`
+WPDIR=/var/www/wordpress
+ROOTDIR=/home/backups/dumps/wordpress/
+DUMPDIR=${ROOTDIR}${TODAY}
+mkdir -p ${DUMPDIR}
+
+SITES=`ls ${WPDIR}`
+
+for SITE in ${SITES}
+do
+	tar czf ${DUMPDIR}/${SITE}.${TODAY}.tar.gz ${WPDIR}/${SITE}
+done

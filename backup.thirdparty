@@ -1,0 +1,14 @@
+#!/bin/bash
+
+TODAY=`date +%Y-%m-%d`
+TPDIR=/var/www/thirdparty
+ROOTDIR=/home/backups/dumps/thirdparty/
+DUMPDIR=${ROOTDIR}${TODAY}
+mkdir -p ${DUMPDIR}
+
+SITES=`ls ${TPDIR}`
+
+for SITE in ${SITES}
+do
+	tar czf ${DUMPDIR}/${SITE}.${TODAY}.tar.gz ${TPDIR}/${SITE}
+done

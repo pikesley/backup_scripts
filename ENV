@@ -1,0 +1,10 @@
+#!/bin/bash
+
+export TODAY=`date +%Y-%m-%d`
+export DUMPROOT=/home/backups/dumps/
+
+function get_root
+{
+	PART=`echo ${0} | sed "s:.*backup\.\(.*\):\1:"`
+	echo ${DUMPROOT}${PART}
+}

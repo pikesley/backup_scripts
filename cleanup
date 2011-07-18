@@ -1,0 +1,7 @@
+#!/bin/bash
+
+AGE=14
+DUMPDIR=/home/backups/dumps
+
+find ${DUMPDIR} -type f -mtime +${AGE} -delete
+find ${DUMPDIR} -type d -empty -delete

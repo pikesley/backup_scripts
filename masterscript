@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for script in `ls backup.*`
+do
+	echo "Doing ${script}"
+	./${script}
+	echo "done"
+done
+
+./cleanup

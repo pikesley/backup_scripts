@@ -1,0 +1,7 @@
+#!/bin/bash
+
+. ./ENV
+
+echo ${TODAY}
+
+echo `get_root`

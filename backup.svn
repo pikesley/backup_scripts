@@ -1,0 +1,16 @@
+#!/bin/bash
+
+TODAY=`date +%Y-%m-%d`
+SVNDIR=/home/svn
+ROOTDIR=/home/backups/dumps/svn/
+DUMPDIR=${ROOTDIR}${TODAY}
+mkdir -p ${DUMPDIR}
+
+REPOS=`ls ${SVNDIR}`
+
+for REPO in ${REPOS}
+do
+#	tar czf ${DUMPDIR}/${REPO}.${TODAY}.tar.gz ${SVNDIR}/${REPO}
+	tar cf ${DUMPDIR}/${REPO}.${TODAY}.tar ${SVNDIR}/${REPO}
+	pigz ${DUMPDIR}/${REPO}.${TODAY}.tar
+done

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+TODAY=`date +%Y-%m-%d`
+REPO=/etc/.git/
+ROOTDIR=/home/backups/dumps/etckeeper/
+DUMPDIR=${ROOTDIR}${TODAY}
+mkdir -p ${DUMPDIR}
+
+cd ${REPO}
+git bundle create ${DUMPDIR}/etckeeper.${TODAY} --all

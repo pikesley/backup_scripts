@@ -1,0 +1,9 @@
+#!/bin/bash
+
+TODAY=`date +%Y-%m-%d`
+ETC=etc
+ROOTDIR=/home/backups/dumps/etc/
+DUMPDIR=${ROOTDIR}${TODAY}
+mkdir -p ${DUMPDIR}
+
+tar czf ${DUMPDIR}/${ETC}.${TODAY}.tar.gz /${ETC}/
