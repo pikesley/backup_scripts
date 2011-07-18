@@ -1,12 +1,9 @@
 #!/bin/bash
 
-DBS=`mysql --skip-column-names -e "show databases" | grep -v information_schema`
-TODAY=`date +%Y-%m-%d`
-ROOTDIR=/home/backups/dumps/mysql/
-DUMPDIR=${ROOTDIR}${TODAY}
-mkdir -p ${DUMPDIR}
+. ENV
 
+DBS=`mysql --skip-column-names -e "show databases" | grep -v information_schema`
 for DB in ${DBS}
 do
-	mysqldump -R ${DB} | pigz -4 > ${DUMPDIR}/${DB}.${TODAY}.sql.gz
+	mysqldump -R ${DB} | pigz -4 > ${OUTPATH}.${DB}.sql.gz
 done

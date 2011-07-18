@@ -3,8 +3,37 @@
 export TODAY=`date +%Y-%m-%d`
 export DUMPROOT=/home/backups/dumps/
 
+function get_name
+{
+	NAME=`echo ${0} | sed "s:.*backup\.\(.*\):\1:"`
+	echo ${NAME}
+}
+
 function get_root
 {
-	PART=`echo ${0} | sed "s:.*backup\.\(.*\):\1:"`
-	echo ${DUMPROOT}${PART}
+	echo ${DUMPROOT}`get_name`
+}
+
+function mkdumpdir
+{
+	DIR=`get_root`/${TODAY}
+	mkdir -p ${DIR}
+	echo ${DIR}
+}
+
+export OUTPATH=`mkdumpdir`/`get_name`.${TODAY}
+
+function dump_these
+{
+	ROOTDIR=${1}
+	DIRS=`ls ${ROOTDIR}`
+	for DIR in ${DIRS}
+	do
+		tar czf ${OUTPATH}.${DIR}.tar.gz ${ROOTDIR}/${DIR}
+	done
+}
+
+function dump_www
+{
+	dump_these /var/www/`get_name`
 }

@@ -1,10 +1,6 @@
 #!/bin/bash
 
-TODAY=`date +%Y-%m-%d`
-KPFILE=/home/sam/.keepassx.kdb
-ROOTDIR=/home/backups/dumps/keepassx/
-DUMPDIR=${ROOTDIR}${TODAY}
-DESTPATH=${DUMPDIR}/keepassx-${TODAY}.kdb
-mkdir -p ${DUMPDIR}
+. ENV
 
-cp ${KPFILE} ${DESTPATH}
+KPFILE=/home/sam/.keepassx.kdb
+cp ${KPFILE} ${OUTPATH}.kdb
