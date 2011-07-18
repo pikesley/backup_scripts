@@ -2,7 +2,7 @@
 
 for script in `ls backup.*`
 do
-	echo "Doing ${script}"
+	echo -n "Doing ${script}..."
 	./${script}
 	echo "done"
 done

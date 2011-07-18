@@ -4,4 +4,4 @@
 
 REPO=/etc/.git/
 cd ${REPO}
-git bundle create ${OUTPATH} --all
+git bundle create ${OUTPATH} --all 2> /dev/null

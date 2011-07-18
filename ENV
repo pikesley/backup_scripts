@@ -29,7 +29,7 @@ function dump_these
 	DIRS=`ls ${ROOTDIR}`
 	for DIR in ${DIRS}
 	do
-		tar czf ${OUTPATH}.${DIR}.tar.gz ${ROOTDIR}/${DIR}
+		tar czf ${OUTPATH}.${DIR}.tar.gz ${ROOTDIR}/${DIR} 2> /dev/null
 	done
 }
 

@@ -3,4 +3,4 @@
 . ENV
 
 SOURCE=/etc/
-tar czf ${OUTPATH}.tar.gz ${SOURCE}
+tar czf ${OUTPATH}.tar.gz ${SOURCE} 2> /dev/null
